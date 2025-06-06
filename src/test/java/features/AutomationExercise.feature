@@ -12,3 +12,7 @@ Feature: Automation Exercise Site Tests
     And user adds jeans to cart
     Then added popup should be visible
     And user clicks on continue shopping
+    And user clicks on Polo brand
+    And user adds top to cart
+    Then added popup should be visible
+    And user clicks on View Cart

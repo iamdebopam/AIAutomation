@@ -1,6 +1,7 @@
 package pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -21,7 +22,10 @@ public class CategoryPage {
     }
 
     public void selectJeans() {
-        driver.findElement(By.xpath("/html/body/section[2]/div/div/div[1]/div/div[1]/div[2]/div[2]/div/ul/li[2]/a")).click();
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebElement jeansLink = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[@href='/category_products/6']")));
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", jeansLink);
+        jeansLink.click();
     }
 
     public void addFirstJeansToCart() {
@@ -41,5 +45,25 @@ public class CategoryPage {
 
     public void clickContinueShopping() {
         driver.findElement(By.xpath("//button[text()='Continue Shopping']")).click();
+    }
+    public void clickPoloBrand() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebElement poloBrand = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[@href='/brand_products/Polo']")));
+        poloBrand.click();
+    }
+
+    public void addFirstTopToCart() {
+        Actions actions = new Actions(driver);
+        WebElement topBlock = driver.findElement(By.xpath("(//div[@class='productinfo text-center'])[1]"));
+        actions.moveToElement(topBlock).perform();
+
+        WebElement addToCart = driver.findElement(By.xpath("(//a[contains(text(),'Add to cart')])[1]"));
+        addToCart.click();
+    }
+
+    public void clickViewCart() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebElement viewCart = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//u[text()='View Cart']")));
+        viewCart.click();
     }
 }

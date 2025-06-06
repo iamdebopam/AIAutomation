@@ -53,6 +53,19 @@ public class StepDefinitions {
     @Then("user clicks on continue shopping")
     public void user_clicks_on_continue_shopping() {
         categoryPage.clickContinueShopping();
-        driver.quit();
+    }
+    @When("user clicks on Polo brand")
+    public void user_clicks_on_polo_brand() {
+        categoryPage.clickPoloBrand();
+    }
+
+    @When("user adds top to cart")
+    public void user_adds_top_to_cart() {
+        categoryPage.addFirstTopToCart();
+    }
+
+    @Then("user clicks on View Cart")
+    public void user_clicks_on_view_cart() {
+        categoryPage.clickViewCart();
     }
 }
