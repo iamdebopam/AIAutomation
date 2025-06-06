@@ -29,12 +29,13 @@ public class CategoryPage {
     }
 
     public void addFirstJeansToCart() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         Actions actions = new Actions(driver);
-        WebElement jeansBlock = driver.findElement(By.xpath("/html/body/section/div/div[2]/div[2]/div/div[2]/div/div[1]/div[2]"));
+        WebElement jeansBlock = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/section/div/div[2]/div[2]/div/div[2]/div/div[1]/div[2]")));
         actions.moveToElement(jeansBlock).perform();
 
-        WebElement addToCartButton = driver.findElement(By.xpath("/html/body/section/div/div[2]/div[2]/div/div[2]/div/div[1]/div[2]/div/a"));
-        addToCartButton.click();
+        WebElement addToCartButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/section/div/div[2]/div[2]/div/div[2]/div/div[1]/div[2]/div/a")));
+        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", addToCartButton);
     }
 
     public boolean isAddedPopupVisible() {
@@ -53,12 +54,13 @@ public class CategoryPage {
     }
 
     public void addFirstTopToCart() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         Actions actions = new Actions(driver);
-        WebElement topBlock = driver.findElement(By.xpath("(//div[@class='productinfo text-center'])[1]"));
+        WebElement topBlock = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("(//div[@class='productinfo text-center'])[1]")));
         actions.moveToElement(topBlock).perform();
 
-        WebElement addToCart = driver.findElement(By.xpath("(//a[contains(text(),'Add to cart')])[1]"));
-        addToCart.click();
+        WebElement addToCart = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//a[contains(text(),'Add to cart')])[1]")));
+        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", addToCart);
     }
 
     public void clickViewCart() {
