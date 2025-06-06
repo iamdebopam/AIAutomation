@@ -3,6 +3,7 @@
     <test name="Automation Exercise Test">
         <classes>
             <class name="runners.TestRunner"/>
+            <class name="runners.CheckoutRunner"/>
         </classes>
     </test>
 </suite>

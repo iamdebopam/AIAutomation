@@ -8,8 +8,7 @@ import org.testng.annotations.DataProvider;
         features = {
                 "src/test/java/features/homePage.feature",
                 "src/test/java/features/jeansCart.feature",
-                "src/test/java/features/poloCart.feature",
-                "src/test/java/features/checkout.feature"
+                "src/test/java/features/poloCart.feature"
         },
         glue = {"stepDefinitions"},
         plugin = {"pretty", "html:target/cucumber-reports.html"},
