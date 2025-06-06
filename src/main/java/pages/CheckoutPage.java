@@ -2,7 +2,11 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.time.Duration;
 import java.util.Set;
 
 public class CheckoutPage {
@@ -14,13 +18,16 @@ public class CheckoutPage {
         this.driver = driver;
     }
 
-    By proceedToCheckoutBtn = By.xpath("//a[contains(text(),'Proceed To Checkout')]");
-    By loginRegisterPopup = By.xpath("//div[contains(@class,'modal-content') and contains(., 'Login')]");
-    By loginRegisterLink = By.xpath("//a[contains(text(),'Register / Login')]");
-    By loginForm = By.id("form"); // Adjust locator according to actual login page
+    By proceedToCheckoutBtn = By.xpath("//a[text()='Proceed To Checkout']");
+    By loginRegisterPopup = By.xpath("//*[@id=\"checkoutModal\"]/div/div/div[2]/p[1]");
+    By loginRegisterLink = By.xpath("//*[@id=\"checkoutModal\"]/div/div/div[2]/p[2]/a/u");
+    By loginForm = By.xpath("//*[@id=\"form\"]/div/div/div[1]/div/h2"); // Adjust locator according to actual login page
 
     public void clickProceedToCheckout() {
-        driver.findElement(proceedToCheckoutBtn).click();
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebElement proceedCheckout = wait.until(ExpectedConditions.elementToBeClickable(proceedToCheckoutBtn));
+        proceedCheckout.click();
+
     }
 
     public boolean isLoginRegisterPopupVisible() {

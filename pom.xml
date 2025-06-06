@@ -4,6 +4,10 @@
     <groupId>com.bdd</groupId>
     <artifactId>bdd-selenium-framework</artifactId>
     <version>1.0</version>
+    <properties>
+        <maven.compiler.source>19</maven.compiler.source>
+        <maven.compiler.target>19</maven.compiler.target>
+    </properties>
 
     <dependencies>
         <dependency>
