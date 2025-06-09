@@ -3,7 +3,7 @@ package stepDefinitions;
 import io.cucumber.java.en.*;
 import org.openqa.selenium.WebDriver;
 import pages.HomePage;
-import utilities.*;
+import Utilities.*;
 import java.util.Properties;
 import static org.testng.Assert.*;
 

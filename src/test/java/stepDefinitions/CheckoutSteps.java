@@ -4,7 +4,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.WebDriver;
 import pages.CheckoutPage;
-import utilities.DriverFactory;
+import Utilities.DriverFactory;
 
 import static org.testng.Assert.assertTrue;
 

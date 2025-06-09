@@ -5,7 +5,7 @@ import io.cucumber.testng.CucumberOptions;
 
 @CucumberOptions(
         features = "src/test/java/features/checkout.feature",
-        glue = "stepDefinitions",
+        glue = {"stepDefinitions","hooks"},
         plugin = {"pretty", "html:target/cucumber-reports/checkout.html"},
         monochrome = true
 )

@@ -10,8 +10,8 @@ import org.testng.annotations.DataProvider;
                 "src/test/java/features/jeansCart.feature",
                 "src/test/java/features/poloCart.feature"
         },
-        glue = {"stepDefinitions"},
-        plugin = {"pretty", "html:target/cucumber-reports.html"},
+        glue = {"stepDefinitions","hooks"},
+        plugin = {"pretty"},
         monochrome = true
 )
 public class TestRunner extends AbstractTestNGCucumberTests {

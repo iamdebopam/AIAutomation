@@ -3,7 +3,7 @@ package stepDefinitions;
 import io.cucumber.java.en.*;
 import org.openqa.selenium.WebDriver;
 import pages.CategoryPage;
-import utilities.DriverFactory;
+import Utilities.DriverFactory;
 import static org.testng.Assert.*;
 
 public class JeansSteps {
