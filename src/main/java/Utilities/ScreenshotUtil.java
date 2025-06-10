@@ -15,7 +15,7 @@ public class ScreenshotUtil {
     public static String captureScreenshot(WebDriver driver,String scenarioName){
         File src = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
 
-        String folderRelative = "test-output/screenshots/";
+        String folderRelative = "test-output/SparkReport/screenshots/";
         String fileName = scenarioName.replaceAll("[^a-zA-Z0-9]","_") + "_" + System.currentTimeMillis() + ".png";
 
         Path screenshotDir = Paths.get(System.getProperty("user.dir"),folderRelative);

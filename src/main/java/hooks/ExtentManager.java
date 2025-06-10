@@ -11,10 +11,11 @@ public class ExtentManager {
 
     public static ExtentReports getInstance(){
         if(extent == null){
-            String reportPath = System.getProperty("user.dir") + "/test-output/ExtentReport.html";
+            //String reportPath = System.getProperty("user.dir") + "/test-output/ExtentReport.html";
+            String reportPath = System.getProperty("user.dir") + "/test-output/SparkReport/Spark.html";
             ExtentSparkReporter spark= new ExtentSparkReporter(reportPath);
             try{
-                spark.loadXMLConfig(new File("src/main/java/hooks/extent-config.xml"));
+                spark.loadXMLConfig(new File("src/main/java/hooks/spark-config.xml"));
 
             }catch (IOException e){
                 e.printStackTrace();
