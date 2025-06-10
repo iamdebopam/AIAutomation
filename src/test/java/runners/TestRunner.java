@@ -11,7 +11,8 @@ import org.testng.annotations.DataProvider;
                 "src/test/java/features/poloCart.feature"
         },
         glue = {"stepDefinitions","hooks"},
-        plugin = {"pretty"},
+        plugin = {"pretty",
+        "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"},
         monochrome = true
 )
 public class TestRunner extends AbstractTestNGCucumberTests {

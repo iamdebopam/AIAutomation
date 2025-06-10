@@ -1,7 +1,10 @@
-package Utilities;
+package hooks;
 
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
+
+import java.io.File;
+import java.io.IOException;
 
 public class ExtentManager {
     private static ExtentReports extent;
@@ -10,6 +13,12 @@ public class ExtentManager {
         if(extent == null){
             String reportPath = System.getProperty("user.dir") + "/test-output/ExtentReport.html";
             ExtentSparkReporter spark= new ExtentSparkReporter(reportPath);
+            try{
+                spark.loadXMLConfig(new File("src/main/java/hooks/extent-config.xml"));
+
+            }catch (IOException e){
+                e.printStackTrace();
+            }
 
             spark.config().setReportName("Automation using AI");
             spark.config().setDocumentTitle("Extent Spark Dashboard");

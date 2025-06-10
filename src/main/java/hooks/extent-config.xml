@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<extentreports>
+    <configuration>
+        <theme>dark</theme>
+        <documentTitle>Animated Automation Test Report</documentTitle>
+        <reportName>Custom Dashboard with Animations</reportName>
+        <encoding>utf-8</encoding>
+        <protocol>https</protocol>
+        <chartVisibilityOnOpen>true</chartVisibilityOnOpen>
+        <testViewChartLocation>top</testViewChartLocation>
+
+        <styles>
+            <![CDATA[
+                body {
+                    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                    background-color: #1e1e2f;
+                    color: #ffffff;
+                }
+                .report-name {
+                    font-size: 28px;
+                    color: #00BCD4;
+                    font-weight: bold;
+                    animation: fadeInDown 1s ease-in-out;
+                }
+                .test-status.pass {
+                    background-color: #4CAF50;
+                    animation: pulse 1.5s infinite;
+                }
+                .test-status.fail {
+                    background-color: #F44336;
+                    animation: shake 0.8s ease-in-out;
+                }
+                .test-status.skip {
+                    background-color: #FFC107;
+                    animation: fadeIn 2s ease-in;
+                }
+                .test-status.warning {
+                    background-color: #FF9800;
+                    animation: bounce 1.2s infinite;
+                }
+                .test-status.info {
+                    background-color: #2196F3;
+                    animation: fadeInUp 1s ease-in-out;
+                }
+
+                @keyframes fadeInDown {
+                    from { opacity: 0; transform: translateY(-20px); }
+                    to { opacity: 1; transform: translateY(0); }
+                }
+                @keyframes fadeInUp {
+                    from { opacity: 0; transform: translateY(20px); }
+                    to { opacity: 1; transform: translateY(0); }
+                }
+                @keyframes fadeIn {
+                    from { opacity: 0; }
+                    to { opacity: 1; }
+                }
+                @keyframes pulse {
+                    0% { transform: scale(1); }
+                    50% { transform: scale(1.05); }
+                    100% { transform: scale(1); }
+                }
+                @keyframes shake {
+                    0%, 100% { transform: translateX(0); }
+                    25% { transform: translateX(-5px); }
+                    75% { transform: translateX(5px); }
+                }
+                @keyframes bounce {
+                    0%, 100% { transform: translateY(0); }
+                    50% { transform: translateY(-10px); }
+                }
+            ]]>
+        </styles>
+
+        <scripts>
+            <![CDATA[
+                document.addEventListener('DOMContentLoaded', function() {
+                    console.log("Animated Dashboard Loaded");
+                });
+            ]]>
+        </scripts>
+    </configuration>
+</extentreports>

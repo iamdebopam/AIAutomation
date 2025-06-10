@@ -6,7 +6,8 @@ import io.cucumber.testng.CucumberOptions;
 @CucumberOptions(
         features = "src/test/java/features/checkout.feature",
         glue = {"stepDefinitions","hooks"},
-        plugin = {"pretty", "html:target/cucumber-reports/checkout.html"},
+        plugin = {"pretty",
+                "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"},
         monochrome = true
 )
 public class CheckoutRunner extends AbstractTestNGCucumberTests {}

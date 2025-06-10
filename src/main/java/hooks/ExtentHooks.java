@@ -1,11 +1,12 @@
 package hooks;
 
 import Utilities.DriverFactory;
-import Utilities.ExtentManager;
 import Utilities.ScreenshotUtil;
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.MediaEntityBuilder;
+import com.aventstack.extentreports.Status;
+import com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter;
 import io.cucumber.java.After;
 import io.cucumber.java.AfterStep;
 import io.cucumber.java.Before;
@@ -22,6 +23,10 @@ public class ExtentHooks {
         ExtentTest test = extent.createTest(scenario.getName());
         scenarioThread.set(test);
         driver= DriverFactory.getDriver();
+
+        // Load feature file lines into a map
+        FeatureParser.loadFeatureLines(scenario.getUri());
+        /*scenarioThread.set(ExtentManager.createTest(scenario.getName()));*/
     }
 
     @AfterStep
@@ -29,11 +34,16 @@ public class ExtentHooks {
         if(driver == null){
             driver=DriverFactory.getDriver();
         }
+
+        String stepInfo = FeatureParser.getStepInfo(scenario.getLine());
+        ExtentCucumberAdapter.getCurrentStep().log(Status.INFO, stepInfo);
+
+
         String screenshotPath = ScreenshotUtil.captureScreenshot(driver,scenario.getName().replaceAll(" ","_"));
         if(scenario.isFailed()){
-            scenarioThread.get().fail("Step failed", MediaEntityBuilder.createScreenCaptureFromPath(screenshotPath).build());
+            scenarioThread.get().fail("Step failed " + stepInfo, MediaEntityBuilder.createScreenCaptureFromPath(screenshotPath).build());
         } else{
-            scenarioThread.get().pass("Step passed", MediaEntityBuilder.createScreenCaptureFromPath(screenshotPath).build());
+            scenarioThread.get().pass("Step passed " + stepInfo, MediaEntityBuilder.createScreenCaptureFromPath(screenshotPath).build());
         }
     }
 
